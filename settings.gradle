@@ -1,0 +1,28 @@
+/*
+ * Copyright IBM Corp. 2017 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+buildscript {
+	repositories {
+		maven { url 'https://plugins.gradle.org/m2/' }
+	}
+
+	dependencies {
+		classpath 'gradle.plugin.net.vivin:gradle-semantic-build-versioning:4.0.0'
+	}
+
+}
+
+apply plugin: 'net.vivin.gradle-semantic-build-versioning'
+
+include ':composer-sdk-java-bna'
+include ':composer-sdk-java-bna-plugin'
+include ':composer-sdk-java-client'
+include ':composer-sdk-java-common'
+include ':composer-sdk-java-codegen'
+include ':composer-sdk-java-system-cto'
+include ':composer-sdk-java-annotation'
+include ':composer-sdk-java-driver-fabric-v1'
+

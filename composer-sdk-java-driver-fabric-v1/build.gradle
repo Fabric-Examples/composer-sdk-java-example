@@ -1,0 +1,12 @@
+/*
+ * Copyright IBM Corp. 2017 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+dependencies {
+	compile("com.github.xuanyue202:fabric-sdk-java:1.0.5") {
+		exclude module: 'log4j'
+	}
+	compile project(':composer-sdk-java-client')
+}

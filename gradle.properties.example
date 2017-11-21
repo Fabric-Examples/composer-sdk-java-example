@@ -1,0 +1,13 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# change to your own nexus url
+nexusUrl=<your_nexus_url>
+
+nexusUsername=<your_name>
+nexusPassword=<your_password>
+
+# release=comment_to_disable

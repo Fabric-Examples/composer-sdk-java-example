@@ -1,0 +1,31 @@
+/*
+ * Copyright IBM Corp. 2017 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+rule SysRule {
+  	description: "System rule that should not be removed"
+	participant: "org.hyperledger.composer.system.Participant"
+   	operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+  	action: ALLOW
+}
+
+// should be modified
+rule AssetFullyAccessRule {
+  	description: "All kinds of assets fully access rule"
+	participant: "org.hyperledger.composer.system.Participant"
+   	operation: ALL
+    resource: "org.hyperledger.composer.system.Asset"
+  	action: ALLOW
+}
+
+// should be modified
+rule ParticipantFullyAccessRule {
+  	description: "All kinds of participants fully access rule"
+	participant: "org.hyperledger.composer.system.Participant"
+   	operation: ALL
+    resource: "org.hyperledger.composer.system.Asset"
+  	action: ALLOW
+}

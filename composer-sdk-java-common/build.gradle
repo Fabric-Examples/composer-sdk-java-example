@@ -1,0 +1,11 @@
+/*
+ * Copyright IBM Corp. 2017 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+dependencies {
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.4.4'
+	compile 'org.apache.commons:commons-lang3:3.6'
+	compile project(':composer-sdk-java-system-cto')
+}

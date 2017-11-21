@@ -1,0 +1,53 @@
+/*
+ * Copyright IBM Corp. 2017 All Rights Reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+def composer_version = '0.14.2'
+print 'The composer version is *' + composer_version + '*!\n'
+
+configurations {
+	console
+}
+
+dependencies {
+	console 'commons-cli:commons-cli:1.2'
+	console('jline:jline:2.11') {
+		exclude(group: 'junit', module: 'junit')
+	}
+	console 'org.codehaus.groovy:groovy-groovysh:2.2.+'
+}
+
+def outputFile = file("$buildDir/version.txt")
+
+task installComposer(type: Exec) {
+	commandLine 'npm', 'install', 'composer-runtime@' + composer_version
+}
+
+installComposer.inputs.property "version", composer_version
+installComposer.outputs.files outputFile
+
+task installComposerServer(type: Exec, dependsOn: installComposer) {
+	commandLine 'npm', 'install', 'composer-connector-server@' + composer_version
+}
+
+installComposerServer.inputs.property "version", composer_version
+installComposerServer.outputs.files outputFile
+
+task codeGenerate(type: Exec, dependsOn: installComposerServer) {
+	commandLine 'npm', 'install'
+}
+
+codeGenerate.doLast {
+	if (!outputFile.isFile()) {
+		outputFile.parentFile.mkdirs()
+		outputFile.createNewFile()
+	}
+	outputFile.write "Version: $composer_version"
+}
+
+codeGenerate.inputs.property "version", composer_version
+codeGenerate.outputs.files outputFile
+
+licenseCheck.dependsOn codeGenerate
